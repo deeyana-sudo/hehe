@@ -1,0 +1,567 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- Blank browser title -->
+    <title></title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+
+        /* =========================
+           PASSWORD BOX
+        ========================= */
+
+        #passwordBox {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            background: #111;
+
+            padding: 30px;
+
+            border-radius: 10px;
+
+            text-align: center;
+
+            z-index: 999;
+
+            color: white;
+
+            width: 90%;
+
+            max-width: 350px;
+
+            box-shadow: 0 0 25px rgba(255, 0, 51, 0.4);
+        }
+
+
+        #passwordBox h2 {
+            margin-bottom: 10px;
+
+            font-size: 21px;
+
+            line-height: 1.4;
+        }
+
+
+        #passwordBox input {
+            padding: 10px;
+
+            margin: 12px 0;
+
+            width: 100%;
+
+            border-radius: 4px;
+
+            border: none;
+
+            font-size: 16px;
+
+            outline: none;
+        }
+
+
+        #passwordBox button {
+            padding: 10px 25px;
+
+            background: #ff0033;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 4px;
+
+            cursor: pointer;
+
+            font-size: 16px;
+        }
+
+
+        #passwordBox button:hover {
+            background: #ff3355;
+        }
+
+
+        /* =========================
+           MAIN CONTENT
+        ========================= */
+
+        #mainContent {
+            display: none;
+
+            width: 100vw;
+
+            height: 100vh;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            position: relative;
+
+            padding: 10px;
+        }
+
+
+        #mainCanvas {
+            display: block;
+
+            animation: beat 1.2s ease-in-out infinite;
+
+            z-index: 2;
+
+            max-width: 90%;
+
+            height: auto;
+        }
+
+
+        /* =========================
+           HEART BEATING
+        ========================= */
+
+        @keyframes beat {
+
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            25% {
+                transform: scale(1.08);
+            }
+
+            40% {
+                transform: scale(1);
+            }
+
+            60% {
+                transform: scale(1.1);
+            }
+
+            80% {
+                transform: scale(1);
+            }
+
+        }
+
+
+        /* =========================
+           MESSAGE
+        ========================= */
+
+        .message {
+            color: white;
+
+            font-size: 18px;
+
+            text-align: center;
+
+            margin-top: 20px;
+
+            padding: 0 15px;
+
+            line-height: 1.6;
+
+            max-width: 600px;
+
+            z-index: 3;
+
+            animation: softFade 2s ease-in-out infinite alternate;
+        }
+
+
+        @keyframes softFade {
+
+            from {
+                opacity: 0.8;
+            }
+
+            to {
+                opacity: 1;
+            }
+
+        }
+
+
+        /* =========================
+           FROM DEEYANA
+        ========================= */
+
+        .from {
+
+            margin-top: 15px;
+
+            font-size: 16px;
+
+            color: #ff6680;
+
+            font-style: italic;
+        }
+
+
+        /* =========================
+           FLYING HEARTS
+        ========================= */
+
+        #flyingHearts {
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            overflow: hidden;
+
+            z-index: 1;
+
+            pointer-events: none;
+        }
+
+
+        .mini-heart {
+
+            position: absolute;
+
+            bottom: -50px;
+
+            color: #ff3355;
+
+            font-size: 20px;
+
+            animation: floatUp linear infinite;
+
+            opacity: 0.7;
+        }
+
+
+        @keyframes floatUp {
+
+            0% {
+
+                transform:
+                    translateY(0)
+                    rotate(0deg);
+
+                opacity: 0.7;
+            }
+
+
+            100% {
+
+                transform:
+                    translateY(-110vh)
+                    rotate(360deg);
+
+                opacity: 0;
+            }
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            #passwordBox {
+                padding: 25px;
+            }
+
+
+            #passwordBox h2 {
+                font-size: 19px;
+            }
+
+
+            .message {
+                font-size: 16px;
+
+                line-height: 1.7;
+            }
+
+
+            .from {
+                font-size: 15px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         QUESTION
+    ========================= -->
+
+    <div id="passwordBox">
+
+        <h2>
+            When is the day we started dating? 🤗
+        </h2>
+
+
+        <input
+            type="password"
+            id="passInput"
+            placeholder="Enter answer..."
+        >
+
+
+        <br>
+
+
+        <button onclick="checkPass()">
+            Open
+        </button>
+
+    </div>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================= -->
+
+    <div id="mainContent">
+
+        <div id="flyingHearts"></div>
+
+
+        <canvas id="mainCanvas"></canvas>
+
+
+        <div class="message">
+
+            Hi sayangg !!<br>
+
+            You're doing great today and everyday.<br>
+
+            I'm always proud of you.<br>
+
+            I love you so so soooo muchhh sayangggg ❤️
+
+
+            <div class="from">
+
+                From: Deeyana ❤️
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+
+        // =========================
+        // CORRECT ANSWER
+        // =========================
+
+        const CORRECT_PASS = "2705";
+
+
+        function checkPass() {
+
+            let input =
+                document.getElementById("passInput").value;
+
+
+            if (input === CORRECT_PASS) {
+
+                document.getElementById("passwordBox").style.display = "none";
+
+
+                document.getElementById("mainContent").style.display = "flex";
+
+
+                drawMainHeart();
+
+
+                startFlyingHearts();
+
+            }
+
+            else {
+
+                alert("Wrong answer, try again ❤️");
+
+            }
+
+        }
+
+
+        // =========================
+        // MAIN HEART
+        // =========================
+
+        const canvas =
+            document.getElementById("mainCanvas");
+
+
+        const ctx =
+            canvas.getContext("2d");
+
+
+        canvas.width = 550;
+
+        canvas.height = 500;
+
+
+        function drawMainHeart() {
+
+            ctx.clearRect(
+                0,
+                0,
+                canvas.width,
+                canvas.height
+            );
+
+
+            for (let i = 0; i < 360; i++) {
+
+                let angle =
+                    i * Math.PI / 180;
+
+
+                let x =
+                    16 *
+                    Math.pow(
+                        Math.sin(angle),
+                        3
+                    );
+
+
+                let y =
+                    -(
+                        13 * Math.cos(angle)
+                        - 5 * Math.cos(2 * angle)
+                        - 2 * Math.cos(3 * angle)
+                        - Math.cos(4 * angle)
+                    );
+
+
+                ctx.beginPath();
+
+
+                ctx.moveTo(
+                    275,
+                    250
+                );
+
+
+                ctx.lineTo(
+                    275 + x * 16,
+                    250 + y * 16
+                );
+
+
+                ctx.strokeStyle =
+                    "#ff0033";
+
+
+                ctx.stroke();
+
+            }
+
+        }
+
+
+        // =========================
+        // FLYING HEARTS
+        // =========================
+
+        function startFlyingHearts() {
+
+            const flyContainer =
+                document.getElementById("flyingHearts");
+
+
+            function createHeart() {
+
+                let heart =
+                    document.createElement("div");
+
+
+                heart.className =
+                    "mini-heart";
+
+
+                heart.innerHTML =
+                    "❤️";
+
+
+                heart.style.left =
+                    Math.random() * 100 + "%";
+
+
+                heart.style.fontSize =
+                    (Math.random() * 16 + 10) + "px";
+
+
+                heart.style.animationDuration =
+                    (Math.random() * 5 + 6) + "s";
+
+
+                flyContainer.appendChild(
+                    heart
+                );
+
+
+                setTimeout(
+                    () => heart.remove(),
+                    11000
+                );
+
+            }
+
+
+            setInterval(
+                createHeart,
+                450
+            );
+
+        }
+
+    </script>
+
+</body>
+
+</html>
+```
