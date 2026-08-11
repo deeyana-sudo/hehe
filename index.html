@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +9,7 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>For You ❤️</title>
+    <title></title>
 
     <style>
 
@@ -82,15 +83,21 @@
             justify-content: center;
             align-items: center;
             position: relative;
-            padding: 10px 20px 40px;
+            padding: 15px 20px 30px;
         }
+
+        /* MEDIUM HEART */
 
         #mainCanvas {
             display: block;
             animation: beat 1.2s ease-in-out infinite;
             z-index: 2;
-            max-width: 90%;
-            height: auto;
+
+            /* Medium size for phone */
+            width: 300px;
+            height: 275px;
+            max-width: 80vw;
+            max-height: 35vh;
         }
 
         /* HEART BEAT */
@@ -102,7 +109,7 @@
             }
 
             25% {
-                transform: scale(1.08);
+                transform: scale(1.06);
             }
 
             40% {
@@ -110,7 +117,7 @@
             }
 
             60% {
-                transform: scale(1.1);
+                transform: scale(1.08);
             }
 
             80% {
@@ -123,12 +130,12 @@
 
         .message {
             color: white;
-            font-size: 18px;
+            font-size: 16px;
             text-align: center;
-            margin-top: 20px;
-            padding: 0 15px;
-            line-height: 1.7;
-            max-width: 600px;
+            margin-top: 12px;
+            padding: 0 10px;
+            line-height: 1.55;
+            max-width: 500px;
             z-index: 3;
             animation: softFade 2s ease-in-out infinite alternate;
         }
@@ -148,8 +155,8 @@
         /* FROM DEEYANA */
 
         .from {
-            margin-top: 15px;
-            font-size: 16px;
+            margin-top: 12px;
+            font-size: 15px;
             color: #ff6680;
             font-style: italic;
         }
@@ -202,13 +209,27 @@
                 font-size: 19px;
             }
 
+            #mainContent {
+                padding: 10px 15px 25px;
+            }
+
+            /* Perfect medium size for phone */
+            #mainCanvas {
+                width: 280px;
+                height: 255px;
+                max-width: 78vw;
+                max-height: 32vh;
+            }
+
             .message {
-                font-size: 16px;
-                line-height: 1.7;
+                font-size: 15px;
+                line-height: 1.55;
+                margin-top: 10px;
             }
 
             .from {
-                font-size: 15px;
+                font-size: 14px;
+                margin-top: 10px;
             }
 
         }
@@ -332,6 +353,12 @@
             canvas.getContext("2d");
 
 
+        /*
+            Canvas stays high quality internally,
+            but CSS makes the heart medium-sized
+            on the phone screen.
+        */
+
         canvas.width = 550;
         canvas.height = 500;
 
@@ -453,3 +480,4 @@
 </body>
 
 </html>
+```
