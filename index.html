@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +8,7 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title></title>
+    <title>For You ❤️</title>
 
     <style>
 
@@ -128,7 +127,7 @@
             text-align: center;
             margin-top: 20px;
             padding: 0 15px;
-            line-height: 1.6;
+            line-height: 1.7;
             max-width: 600px;
             z-index: 3;
             animation: softFade 2s ease-in-out infinite alternate;
@@ -222,7 +221,7 @@
 <body>
 
 
-    <!-- QUESTION -->
+    <!-- PASSWORD QUESTION -->
 
     <div id="passwordBox">
 
@@ -239,7 +238,7 @@
         <br>
 
         <button onclick="checkPass()">
-            Open
+            Open ❤️
         </button>
 
     </div>
@@ -249,18 +248,35 @@
 
     <div id="mainContent">
 
+        <!-- FLYING HEARTS -->
+
         <div id="flyingHearts"></div>
+
+
+        <!-- MAIN HEART -->
 
         <canvas id="mainCanvas"></canvas>
 
 
-        <!-- YOUR MESSAGE -->
+        <!-- SWEET MESSAGE -->
 
         <div class="message">
 
-            Hi sayangggg !!<br>
-            I just want you to know that you mean the world to me.<br>
-            Thank you for being you, and I will always love you. ❤️
+            Hi sayangggg ❤️<br><br>
+
+            You are one of the most beautiful parts of my life.<br>
+            Thank you for always being someone I can love,<br>
+            care for, and cherish.<br><br>
+
+            No matter what happens, I hope you always remember<br>
+            that you are special to me.<br>
+
+            I'm grateful for every moment, every laugh,<br>
+            and every memory we've shared.<br><br>
+
+            I may not always know the perfect words to say it,<br>
+            but I hope you know that I love you<br>
+            more than words can explain. ❤️
 
             <div class="from">
                 From: Deeyana ❤️
@@ -273,10 +289,12 @@
 
     <script>
 
-        // CORRECT ANSWER
+        // CORRECT PASSWORD
 
         const CORRECT_PASS = "2705";
 
+
+        // CHECK PASSWORD
 
         function checkPass() {
 
@@ -352,17 +370,22 @@
 
                 ctx.beginPath();
 
+
                 ctx.moveTo(
                     275,
                     250
                 );
+
 
                 ctx.lineTo(
                     275 + x * 16,
                     250 + y * 16
                 );
 
-                ctx.strokeStyle = "#ff0033";
+
+                ctx.strokeStyle =
+                    "#ff0033";
+
 
                 ctx.stroke();
 
@@ -384,24 +407,31 @@
                 let heart =
                     document.createElement("div");
 
+
                 heart.className =
                     "mini-heart";
+
 
                 heart.innerHTML =
                     "❤️";
 
+
                 heart.style.left =
                     Math.random() * 100 + "%";
+
 
                 heart.style.fontSize =
                     (Math.random() * 16 + 10) + "px";
 
+
                 heart.style.animationDuration =
                     (Math.random() * 5 + 6) + "s";
+
 
                 flyContainer.appendChild(
                     heart
                 );
+
 
                 setTimeout(
                     () => heart.remove(),
@@ -423,4 +453,3 @@
 </body>
 
 </html>
-```
