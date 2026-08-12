@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +8,7 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title></title>
+    <title>A Surprise For You ❤️</title>
 
     <style>
 
@@ -17,219 +16,517 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: Arial, sans-serif;
         }
 
         body {
-            background: #000;
-            font-family: Arial, sans-serif;
+            background: #ffeff4;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             overflow: hidden;
+            padding: 20px;
+            position: relative;
         }
 
-        /* PASSWORD BOX */
+        /* =========================
+           PASSWORD SCREEN
+        ========================= */
 
         #passwordBox {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: #111;
-            padding: 30px;
-            border-radius: 10px;
+            background: white;
+            padding: 40px 30px;
+            border-radius: 16px;
             text-align: center;
             z-index: 999;
-            color: white;
             width: 90%;
-            max-width: 350px;
-            box-shadow: 0 0 25px rgba(255, 0, 51, 0.4);
+            max-width: 380px;
+            box-shadow: 0 4px 20px rgba(255, 100, 150, 0.2);
         }
 
         #passwordBox h2 {
-            margin-bottom: 10px;
-            font-size: 21px;
-            line-height: 1.4;
+            color: #d6336c;
+            margin-bottom: 20px;
+            font-size: 22px;
         }
 
         #passwordBox input {
-            padding: 10px;
-            margin: 12px 0;
+            padding: 12px;
+            margin: 10px 0;
             width: 100%;
-            border-radius: 4px;
-            border: none;
+            border-radius: 8px;
+            border: 1px solid #ffbad2;
             font-size: 16px;
+            text-align: center;
             outline: none;
         }
 
         #passwordBox button {
-            padding: 10px 25px;
-            background: #ff0033;
+            padding: 12px 30px;
+            background: #ff4d79;
             color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: 8px;
             cursor: pointer;
             font-size: 16px;
+            margin-top: 10px;
         }
 
         #passwordBox button:hover {
-            background: #ff3355;
+            background: #e83d69;
         }
 
-        /* MAIN CONTENT */
 
-        #mainContent {
+        /* =========================
+           STEPS
+        ========================= */
+
+        .step {
             display: none;
-            width: 100vw;
-            height: 100vh;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            padding: 15px 20px 30px;
-        }
-
-        /* MEDIUM HEART */
-
-        #mainCanvas {
-            display: block;
-            animation: beat 1.2s ease-in-out infinite;
-            z-index: 2;
-
-            /* Medium size for phone */
-            width: 300px;
-            height: 275px;
-            max-width: 80vw;
-            max-height: 35vh;
-        }
-
-        /* HEART BEAT */
-
-        @keyframes beat {
-
-            0%, 100% {
-                transform: scale(1);
-            }
-
-            25% {
-                transform: scale(1.06);
-            }
-
-            40% {
-                transform: scale(1);
-            }
-
-            60% {
-                transform: scale(1.08);
-            }
-
-            80% {
-                transform: scale(1);
-            }
-
-        }
-
-        /* MESSAGE */
-
-        .message {
-            color: white;
-            font-size: 16px;
             text-align: center;
-            margin-top: 12px;
-            padding: 0 10px;
-            line-height: 1.55;
-            max-width: 500px;
-            z-index: 3;
-            animation: softFade 2s ease-in-out infinite alternate;
+            max-width: 420px;
+            width: 100%;
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        @keyframes softFade {
+        .active {
+            display: block;
+        }
 
-            from {
-                opacity: 0.8;
+        @keyframes popIn {
+
+            0% {
+                opacity: 0;
+                transform: scale(0.8) translateY(10px);
             }
 
-            to {
+            100% {
                 opacity: 1;
+                transform: scale(1) translateY(0);
             }
 
         }
 
-        /* FROM DEEYANA */
 
-        .from {
-            margin-top: 12px;
-            font-size: 15px;
-            color: #ff6680;
-            font-style: italic;
-        }
+        /* =========================
+           SPARKLES
+        ========================= */
 
-        /* FLYING HEARTS */
-
-        #flyingHearts {
-            position: absolute;
+        #sparkles {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            overflow: hidden;
-            z-index: 1;
             pointer-events: none;
+            z-index: 99;
         }
 
-        .mini-heart {
+        .sparkle {
             position: absolute;
-            bottom: -50px;
-            color: #ff3355;
-            font-size: 20px;
-            animation: floatUp linear infinite;
-            opacity: 0.7;
+            border-radius: 50%;
+            animation: sparkleFall 1.2s ease-out forwards;
         }
 
-        @keyframes floatUp {
+        @keyframes sparkleFall {
 
             0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 0.7;
+                opacity: 1;
+                transform: scale(1) translateY(0) rotate(0deg);
             }
 
             100% {
-                transform: translateY(-110vh) rotate(360deg);
                 opacity: 0;
+                transform: scale(0) translateY(120px) rotate(180deg);
             }
 
         }
 
-        /* MOBILE */
+
+        /* =========================
+           STEP 1 - SPECIAL DATE
+        ========================= */
+
+        .date-box {
+            background: white;
+            padding: 35px 25px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(255, 100, 150, 0.15);
+        }
+
+        .date-box h2 {
+            color: #d6336c;
+            margin-bottom: 8px;
+            font-size: 24px;
+        }
+
+        .hint {
+            color: #888;
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+
+        .hearts {
+            font-size: 26px;
+            margin-bottom: 25px;
+            letter-spacing: 8px;
+        }
+
+        .display {
+            font-size: 24px;
+            letter-spacing: 5px;
+            color: #d6336c;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .num-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .num-btn,
+        .back-btn {
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            background: #ffd6e0;
+            color: #d6336c;
+            font-size: 22px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .num-btn:hover,
+        .back-btn:hover {
+            background: #ffb8cc;
+        }
+
+        .back-btn {
+            grid-column: 3;
+            background: #ffc8d8;
+        }
+
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .next-btn {
+            margin-top: 25px;
+            padding: 12px 35px;
+            background: #ff4d79;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            display: none;
+        }
+
+        .next-btn:hover {
+            background: #e83d69;
+        }
+
+
+        /* =========================
+           STEP 2 & 3 - GIFT
+        ========================= */
+
+        .tap-text {
+            color: #d6336c;
+            font-size: 17px;
+            margin-bottom: 25px;
+        }
+
+        .gift-box {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            position: relative;
+            cursor: pointer;
+            animation: bounce 2s infinite ease-in-out;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(150, 100, 255, 0.2);
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+
+        }
+
+        .gift-wrap {
+            width: 100%;
+            height: 100%;
+            background: #b892ff;
+            position: relative;
+        }
+
+        .gift-ribbon-h {
+            position: absolute;
+            width: 100%;
+            height: 22px;
+            background: #9d75e8;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .gift-ribbon-v {
+            position: absolute;
+            height: 100%;
+            width: 22px;
+            background: #9d75e8;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .gift-bow {
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 45px;
+        }
+
+        .progress-bar {
+            width: 220px;
+            height: 6px;
+            background: #ffd6e0;
+            border-radius: 3px;
+            margin: 25px auto 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 90%;
+            background: #ff75a0;
+            border-radius: 3px;
+        }
+
+
+        /* =========================
+           STEP 4 - ENVELOPE
+        ========================= */
+
+        .envelope {
+            width: 300px;
+            height: 190px;
+            background: linear-gradient(
+                180deg,
+                #ff75a0 0%,
+                #ff9ebb 100%
+            );
+            border-radius: 8px;
+            margin: 0 auto;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(255, 100, 150, 0.2);
+        }
+
+        .seal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 28px;
+            height: 28px;
+            background: #ff4d79;
+            border-radius: 50%;
+        }
+
+
+        /* =========================
+           STEP 5 - LETTER
+        ========================= */
+
+        .letter {
+            background: white;
+            padding: 35px 25px;
+            border-radius: 16px;
+            text-align: left;
+            line-height: 1.8;
+            color: #444;
+            box-shadow: 0 4px 20px rgba(255, 100, 150, 0.2);
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .letter h2 {
+            color: #d6336c;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        .letter p {
+            margin-bottom: 18px;
+        }
+
+        .letter .highlight {
+            color: #d6336c;
+            font-weight: bold;
+            margin-top: 18px;
+            display: block;
+            font-size: 17px;
+        }
+
+        .close-btn {
+            margin-top: 25px;
+            padding: 12px 30px;
+            background: #ff4d79;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .close-btn:hover {
+            background: #e83d69;
+        }
+
+
+        /* =========================
+           STEP 6 - PHOTO & SONG
+        ========================= */
+
+        .photo {
+            width: 260px;
+            max-width: 85vw;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .song-title {
+            color: #d6336c;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .song-button {
+            display: inline-block;
+            padding: 14px 30px;
+            background: #ff4d79;
+            color: white;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 500;
+            margin: 25px 0;
+        }
+
+        .song-button:hover {
+            background: #e83d69;
+        }
+
+        .continue-btn {
+            padding: 12px 30px;
+            background: #ff4d79;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .continue-btn:hover {
+            background: #e83d69;
+        }
+
+
+        /* =========================
+           STEP 7 - FINAL MESSAGE
+        ========================= */
+
+        .final-card {
+            background: white;
+            padding: 35px 25px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(255, 100, 150, 0.2);
+        }
+
+        .final-text {
+            font-size: 22px;
+            color: #d6336c;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .heart-end {
+            font-size: 40px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
 
         @media (max-width: 600px) {
 
-            #passwordBox {
-                padding: 25px;
+            body {
+                padding: 15px;
             }
 
-            #passwordBox h2 {
-                font-size: 19px;
+            .date-box {
+                padding: 30px 20px;
             }
 
-            #mainContent {
-                padding: 10px 15px 25px;
+            .date-box h2 {
+                font-size: 21px;
             }
 
-            /* Perfect medium size for phone */
-            #mainCanvas {
+            .num-grid {
+                gap: 10px;
+            }
+
+            .num-btn,
+            .back-btn {
+                padding: 14px;
+            }
+
+            .gift-box {
+                width: 180px;
+                height: 180px;
+            }
+
+            .envelope {
                 width: 280px;
-                height: 255px;
-                max-width: 78vw;
-                max-height: 32vh;
+                max-width: 90vw;
             }
 
-            .message {
-                font-size: 15px;
-                line-height: 1.55;
-                margin-top: 10px;
-            }
-
-            .from {
+            .letter {
                 font-size: 14px;
-                margin-top: 10px;
+                padding: 25px 20px;
+            }
+
+            .photo {
+                width: 230px;
+            }
+
+            .final-text {
+                font-size: 20px;
             }
 
         }
@@ -241,8 +538,14 @@
 
 <body>
 
+    <!-- SPARKLES -->
 
-    <!-- PASSWORD QUESTION -->
+    <div id="sparkles"></div>
+
+
+    <!-- =========================
+         PASSWORD SCREEN
+    ========================= -->
 
     <div id="passwordBox">
 
@@ -259,48 +562,123 @@
         <br>
 
         <button onclick="checkPass()">
-            Open ❤️
+            Open
         </button>
 
     </div>
 
 
-    <!-- MAIN CONTENT -->
+    <!-- =========================
+         STEP 1 - SPECIAL DATE
+    ========================= -->
 
-    <div id="mainContent">
+    <div class="step" id="step1">
 
-        <!-- FLYING HEARTS -->
+        <div class="date-box">
 
-        <div id="flyingHearts"></div>
+            <h2>
+                Enter Our Special Date
+            </h2>
+
+            <p class="hint">
+                Enter the date as DD MM YYYY
+            </p>
+
+            <div class="display" id="dateDisplay">
+                __ __ ____
+            </div>
+
+            <div class="hearts">
+                ❤️❤️❤️❤️❤️
+            </div>
+
+            <div class="num-grid">
+
+                <button class="num-btn" onclick="addNum('1')">
+                    1
+                </button>
+
+                <button class="num-btn" onclick="addNum('2')">
+                    2
+                </button>
+
+                <button class="num-btn" onclick="addNum('3')">
+                    3
+                </button>
+
+                <button class="num-btn" onclick="addNum('4')">
+                    4
+                </button>
+
+                <button class="num-btn" onclick="addNum('5')">
+                    5
+                </button>
+
+                <button class="num-btn" onclick="addNum('6')">
+                    6
+                </button>
+
+                <button class="num-btn" onclick="addNum('7')">
+                    7
+                </button>
+
+                <button class="num-btn" onclick="addNum('8')">
+                    8
+                </button>
+
+                <button class="num-btn" onclick="addNum('9')">
+                    9
+                </button>
+
+                <button class="num-btn" onclick="addNum('0')">
+                    0
+                </button>
+
+                <button class="back-btn" onclick="delNum()">
+                    ←
+                </button>
+
+            </div>
+
+        </div>
 
 
-        <!-- MAIN HEART -->
+        <button
+            class="next-btn"
+            id="next1"
+            onclick="checkDate()">
 
-        <canvas id="mainCanvas"></canvas>
+            Next
+
+        </button>
+
+    </div>
 
 
-        <!-- SWEET MESSAGE -->
+    <!-- =========================
+         STEP 2 - FIRST GIFT
+    ========================= -->
 
-        <div class="message">
+    <div class="step" id="step2">
 
-            Hi sayangggg ❤️<br><br>
+        <p class="tap-text">
+            Tap to unwrap! 0/21 🎁
+        </p>
 
-            You are one of the most beautiful parts of my life.<br>
-            Thank you for always being someone I can love,<br>
-            care for, and cherish.<br><br>
+        <div
+            class="gift-box"
+            onclick="nextStep(3)">
 
-            No matter what happens, I hope you always remember<br>
-            that you are special to me.<br>
+            <div class="gift-wrap">
 
-            I'm grateful for every moment, every laugh,<br>
-            and every memory we've shared.<br><br>
+                <div class="gift-ribbon-h"></div>
 
-            I may not always know the perfect words to say it,<br>
-            but I hope you know that I love you<br>
-            more than words can explain. ❤️
+                <div class="gift-ribbon-v"></div>
 
-            <div class="from">
-                From: Deeyana ❤️
+                <div class="gift-bow">
+                    🎁
+                </div>
+
             </div>
 
         </div>
@@ -308,176 +686,465 @@
     </div>
 
 
+    <!-- =========================
+         STEP 3 - SECOND GIFT
+    ========================= -->
+
+    <div class="step" id="step3">
+
+        <p class="tap-text">
+            Almost there! 19/21 🎁
+        </p>
+
+        <div
+            class="gift-box"
+            onclick="nextStep(4)">
+
+            <div class="gift-wrap">
+
+                <div class="gift-ribbon-h"></div>
+
+                <div class="gift-ribbon-v"></div>
+
+                <div class="gift-bow">
+                    🎁
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="progress-bar">
+
+            <div class="progress-fill"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         STEP 4 - ENVELOPE
+    ========================= -->
+
+    <div class="step" id="step4">
+
+        <p class="tap-text">
+            Something special is waiting for you... 💌
+        </p>
+
+        <div
+            class="envelope"
+            onclick="nextStep(5)">
+
+            <div class="seal"></div>
+
+        </div>
+
+        <p class="tap-text" style="margin-top: 20px;">
+            Tap the envelope to open it ❤️
+        </p>
+
+    </div>
+
+
+    <!-- =========================
+         STEP 5 - LETTER
+    ========================= -->
+
+    <div class="step" id="step5">
+
+        <div class="letter">
+
+            <h2>
+                A Letter For You ❤️
+            </h2>
+
+            <p>
+                I will love you in your loudest laughs
+                <br>
+                and in your silences.
+                <br>
+                In the reckless jokes,
+                <br>
+                and in the moments when the world feels too heavy.
+                <br>
+                I will be the hand you can reach for
+                <br>
+                without having to pretend.
+            </p>
+
+
+            <p>
+                If love is a river,
+                <br>
+                let me be the shore that steadies you.
+                <br>
+                If love is a gamble,
+                <br>
+                I would choose you—every time—
+                <br>
+                with no fear of losing.
+            </p>
+
+
+            <p>
+                My love, my heart found its home
+                <br>
+                in the curve of your grin,
+                <br>
+                in the softness you try to hide,
+                <br>
+                in the beautiful, impossible way
+                <br>
+                you exist.
+            </p>
+
+
+            <span class="highlight">
+
+                I'm sorry that i can't be a perfect girl as u want , my love.
+                <br>
+                Stay with me—
+                <br>
+                not because the world is dark,
+                <br>
+                but because together,
+                <br>
+                we make it brighter. ❤️
+
+            </span>
+
+        </div>
+
+
+        <button
+            class="close-btn"
+            onclick="nextStep(6)">
+
+            Close & Continue ✨
+
+        </button>
+
+    </div>
+
+
+    <!-- =========================
+         STEP 6 - PHOTO & SONG
+    ========================= -->
+
+    <div class="step" id="step6">
+
+        <img
+            src="https://i.imgur.com/TE5EML8.jpeg"
+            alt="Us together ❤️"
+            class="photo"
+        >
+
+
+        <p class="song-title">
+            Here, my love, our song 🎶
+        </p>
+
+
+        <div>
+
+            <a
+                href="https://youtu.be/sdF6Dn5ahbM"
+                target="_blank"
+                class="song-button">
+
+                🎵 Click here to listen to our song
+
+            </a>
+
+        </div>
+
+
+        <button
+            class="continue-btn"
+            onclick="nextStep(7)">
+
+            Continue 🎵
+
+        </button>
+
+    </div>
+
+
+    <!-- =========================
+         STEP 7 - FINAL MESSAGE
+    ========================= -->
+
+    <div class="step" id="step7">
+
+        <div class="final-card">
+
+            <p class="final-text">
+
+                I love you so much and I hope
+                <br>
+                to spend my days with you
+                <br>
+                for the rest of my life.
+
+            </p>
+
+            <div class="heart-end">
+                ❤️
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
     <script>
 
-        // CORRECT PASSWORD
+        /* PASSWORD */
 
         const CORRECT_PASS = "2705";
 
 
-        // CHECK PASSWORD
+        /* OUR SPECIAL DATE */
+
+        const CORRECT_DATE = "27052024";
+
+
+        let enteredDate = "";
+
+
+        /* =========================
+           SPARKLE EFFECT
+        ========================= */
+
+        function makeSparkles() {
+
+            const container =
+                document.getElementById("sparkles");
+
+            const colors = [
+                "#ff4d79",
+                "#ffd700",
+                "#ff9ebb",
+                "#ffffff",
+                "#ffb8cc"
+            ];
+
+            for (let i = 0; i < 30; i++) {
+
+                let sparkle =
+                    document.createElement("div");
+
+                sparkle.classList.add("sparkle");
+
+                sparkle.style.left =
+                    Math.random() * 100 + "%";
+
+                sparkle.style.top =
+                    Math.random() * 100 + "%";
+
+                sparkle.style.width =
+                    sparkle.style.height =
+                    (Math.random() * 8 + 3) + "px";
+
+                sparkle.style.backgroundColor =
+                    colors[
+                        Math.floor(
+                            Math.random() * colors.length
+                        )
+                    ];
+
+                container.appendChild(sparkle);
+
+                setTimeout(function () {
+
+                    sparkle.remove();
+
+                }, 1200);
+
+            }
+
+        }
+
+
+        /* =========================
+           PASSWORD CHECK
+        ========================= */
 
         function checkPass() {
 
-            let input =
+            const input =
                 document.getElementById("passInput").value;
-
 
             if (input === CORRECT_PASS) {
 
-                document.getElementById("passwordBox").style.display = "none";
+                document.getElementById(
+                    "passwordBox"
+                ).style.display = "none";
 
-                document.getElementById("mainContent").style.display = "flex";
+                document.getElementById(
+                    "step1"
+                ).classList.add("active");
 
-                drawMainHeart();
-
-                startFlyingHearts();
+                makeSparkles();
 
             }
 
             else {
 
-                alert("Wrong answer, try again ❤️");
+                alert(
+                    "Wrong answer, try again ❤️"
+                );
 
             }
 
         }
 
 
-        // MAIN HEART
+        /* =========================
+           NUMBER PAD
+        ========================= */
 
-        const canvas =
-            document.getElementById("mainCanvas");
+        function addNum(number) {
 
-        const ctx =
-            canvas.getContext("2d");
+            if (enteredDate.length < 8) {
+
+                enteredDate += number;
+
+                updateDisplay();
+
+                if (enteredDate.length === 8) {
+
+                    document.getElementById(
+                        "next1"
+                    ).style.display = "inline-block";
+
+                }
+
+            }
+
+        }
 
 
-        /*
-            Canvas stays high quality internally,
-            but CSS makes the heart medium-sized
-            on the phone screen.
-        */
+        /* =========================
+           DELETE NUMBER
+        ========================= */
 
-        canvas.width = 550;
-        canvas.height = 500;
+        function delNum() {
+
+            enteredDate =
+                enteredDate.slice(0, -1);
+
+            updateDisplay();
+
+            if (enteredDate.length < 8) {
+
+                document.getElementById(
+                    "next1"
+                ).style.display = "none";
+
+            }
+
+        }
 
 
-        function drawMainHeart() {
+        /* =========================
+           UPDATE DATE DISPLAY
+        ========================= */
 
-            ctx.clearRect(
-                0,
-                0,
-                canvas.width,
-                canvas.height
+        function updateDisplay() {
+
+            let show =
+                enteredDate.padEnd(8, "_");
+
+            document.getElementById(
+                "dateDisplay"
+            ).innerText =
+                `${show.slice(0, 2)} ${show.slice(2, 4)} ${show.slice(4, 8)}`;
+
+        }
+
+
+        /* =========================
+           CHECK SPECIAL DATE
+        ========================= */
+
+        function checkDate() {
+
+            if (enteredDate === CORRECT_DATE) {
+
+                nextStep(2);
+
+            }
+
+            else {
+
+                alert(
+                    "That's not our special date ❤️ Try again!"
+                );
+
+            }
+
+        }
+
+
+        /* =========================
+           MOVE TO NEXT STEP
+        ========================= */
+
+        function nextStep(number) {
+
+            const currentStep =
+                document.querySelector(".step.active");
+
+            if (currentStep) {
+
+                currentStep.classList.remove("active");
+
+            }
+
+            const nextStepElement =
+                document.getElementById(
+                    "step" + number
+                );
+
+            if (nextStepElement) {
+
+                nextStepElement.classList.add("active");
+
+            }
+
+            makeSparkles();
+
+        }
+
+
+        /* =========================
+           ENTER KEY
+        ========================= */
+
+        document
+            .getElementById("passInput")
+            .addEventListener(
+                "keydown",
+                function (event) {
+
+                    if (event.key === "Enter") {
+
+                        checkPass();
+
+                    }
+
+                }
             );
-
-
-            for (let i = 0; i < 360; i++) {
-
-                let angle =
-                    i * Math.PI / 180;
-
-
-                let x =
-                    16 * Math.pow(
-                        Math.sin(angle),
-                        3
-                    );
-
-
-                let y =
-                    -(
-                        13 * Math.cos(angle)
-                        - 5 * Math.cos(2 * angle)
-                        - 2 * Math.cos(3 * angle)
-                        - Math.cos(4 * angle)
-                    );
-
-
-                ctx.beginPath();
-
-
-                ctx.moveTo(
-                    275,
-                    250
-                );
-
-
-                ctx.lineTo(
-                    275 + x * 16,
-                    250 + y * 16
-                );
-
-
-                ctx.strokeStyle =
-                    "#ff0033";
-
-
-                ctx.stroke();
-
-            }
-
-        }
-
-
-        // FLYING HEARTS
-
-        function startFlyingHearts() {
-
-            const flyContainer =
-                document.getElementById("flyingHearts");
-
-
-            function createHeart() {
-
-                let heart =
-                    document.createElement("div");
-
-
-                heart.className =
-                    "mini-heart";
-
-
-                heart.innerHTML =
-                    "❤️";
-
-
-                heart.style.left =
-                    Math.random() * 100 + "%";
-
-
-                heart.style.fontSize =
-                    (Math.random() * 16 + 10) + "px";
-
-
-                heart.style.animationDuration =
-                    (Math.random() * 5 + 6) + "s";
-
-
-                flyContainer.appendChild(
-                    heart
-                );
-
-
-                setTimeout(
-                    () => heart.remove(),
-                    11000
-                );
-
-            }
-
-
-            setInterval(
-                createHeart,
-                450
-            );
-
-        }
 
     </script>
 
 </body>
 
 </html>
-```
